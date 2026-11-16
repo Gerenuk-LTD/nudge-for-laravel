@@ -1,0 +1,84 @@
+{
+    "name": "gerenuk/nudge-for-laravel",
+    "description": "A Laravel client for the Nudge marketing platform API: contacts, events, lists, tags, custom fields and segments, with queued sending and a test fake.",
+    "keywords": [
+        "gerenuk",
+        "laravel",
+        "nudge",
+        "nudge-for-laravel",
+        "marketing",
+        "email-marketing",
+        "api-client"
+    ],
+    "homepage": "https://github.com/Gerenuk-LTD/nudge-for-laravel",
+    "support": {
+        "issues": "https://github.com/Gerenuk-LTD/nudge-for-laravel/issues",
+        "source": "https://github.com/Gerenuk-LTD/nudge-for-laravel"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kieran Proctor",
+            "email": "kieran.lee.proctor@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "guzzlehttp/guzzle": "^7.8",
+        "illuminate/bus": "^13.0",
+        "illuminate/console": "^13.0",
+        "illuminate/contracts": "^13.0",
+        "illuminate/http": "^13.0",
+        "illuminate/queue": "^13.0",
+        "illuminate/support": "^13.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.14",
+        "nunomaduro/collision": "^8.1.1",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.0",
+        "pestphp/pest-plugin-arch": "^5.0",
+        "pestphp/pest-plugin-laravel": "^5.0",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gerenuk\\Nudge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gerenuk\\Nudge\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=1G",
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gerenuk\\Nudge\\NudgeServiceProvider"
+            ],
+            "aliases": {
+                "Nudge": "Gerenuk\\Nudge\\Facades\\Nudge"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
